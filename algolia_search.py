@@ -60,7 +60,7 @@ def convert_article(page):
         'modified': page_modified,
         'title': page_title,
         'category': page_category,
-        'content': page_text,
+        # 'content': page_text,
         'summary': page_summary,
         'tags': tags,
         'url': page_url
@@ -83,7 +83,7 @@ def index_generator(generator):
     #TODO: utiliser flag dans metadata pour bypass search
     #TODO: settings sur fields
 
-    pprint(index.get_settings())
+    # pprint(index.get_settings())
 
     common_settings = {
         'maxFacetHits': 20,
