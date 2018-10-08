@@ -85,61 +85,61 @@ def index_generator(generator):
 
     # pprint(index.get_settings())
 
-    common_settings = {
-        'maxFacetHits': 20,
-        'attributesToRetrieve': [
-            'title',
-            'summary',
-            'content',
-            'url',
-            'created',
-            'modified',
-            'tags'
-        ],
-        'attributesToHighlight': [
-            'title',
-            'summary',
-        ],
-        'searchableAttributes': [
-            'title',
-            'summary',
-            'content',
-        ],
-        'attributesForFaceting': [
-            'tags',
-        ],
-    }
+    # common_settings = {
+    #     'maxFacetHits': 20,
+    #     'attributesToRetrieve': [
+    #         'title',
+    #         'summary',
+    #         'content',
+    #         'url',
+    #         'created',
+    #         'modified',
+    #         'tags'
+    #     ],
+    #     'attributesToHighlight': [
+    #         'title',
+    #         'summary',
+    #     ],
+    #     'searchableAttributes': [
+    #         'title',
+    #         'summary',
+    #         'content',
+    #     ],
+    #     'attributesForFaceting': [
+    #         'tags',
+    #     ],
+    # }
 
-    settings = common_settings.copy()
-    settings.update({
-        "replicas": [
-            "blog_created_asc",
-            "blog_title_asc",
-            #"blog_created_desc",
-        ],
-        "ranking": [
-            "desc(created)",
-        ]
-    })
-    index.set_settings(settings)
+    # settings = common_settings.copy()
+    # settings.update({
+    #     "replicas": [
+    #         "blog_created_asc",
+    #         "blog_title_asc",
+    #         #"blog_created_desc",
+    #     ],
+    #     "ranking": [
+    #         "desc(created)",
+    #     ]
+    # })
+    # index.set_settings(settings)
 
-    blog_created_asc = client.init_index("blog_created_asc")
-    settings = common_settings.copy()
-    settings.update({
-        "ranking": [
-            "asc(created)",
-        ]
-    })
-    blog_created_asc.set_settings(settings)
+    # blog_created_asc = client.init_index("blog_created_asc")
+    # settings = common_settings.copy()
+    # settings.update({
+    #     "ranking": [
+    #         "asc(created)",
+    #     ]
+    # })
+    # blog_created_asc.set_settings(settings)
 
-    blog_title_asc = client.init_index("blog_title_asc")
-    settings = common_settings.copy()
-    settings.update({
-        "ranking": [
-            "asc(title)",
-        ]
-    })
-    blog_title_asc.set_settings(settings)
+    # blog_title_asc = client.init_index("blog_title_asc")
+    # settings = common_settings.copy()
+    # settings.update({
+    #     "ranking": [
+    #         "asc(title)",
+    #     ]
+    # })
+    # blog_title_asc.set_settings(settings)
 
     exists = []
 
