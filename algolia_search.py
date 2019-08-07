@@ -7,7 +7,8 @@ from bs4 import BeautifulSoup
 
 from pelican import signals
 from pelican.settings import DEFAULT_CONFIG
-from algoliasearch import algoliasearch
+# from algoliasearch import algoliasearch
+from algoliasearch.search_client import SearchClient
 
 logger = logging.getLogger(__name__)
 
@@ -77,7 +78,7 @@ def index_generator(generator):
 
     logger.info("Generating Algolia index '%s' for %d articles..." % (index_name, len(generator.articles)))
 
-    client = algoliasearch.Client(app_id, admin_api_key)
+    client = SearchClient.create(app_id, admin_api_key)
     index = client.init_index(index_name)
 
     #TODO: utiliser flag dans metadata pour bypass search
