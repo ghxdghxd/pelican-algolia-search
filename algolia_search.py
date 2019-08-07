@@ -150,13 +150,14 @@ def index_generator(generator):
             data = convert_article(article)
             objectId = hashlib.sha256(str(article.slug).encode('utf-8')).hexdigest()
             exists.append(objectId)
-            index.add_object(data, objectId)
+            data['objectId'] = objectId
+            index.save_object(data, {'autoGenerateObjectIDIfNotExist': True})
         except Exception as err:
             logger.error(err)
 
     logger.info('Purge old Algolia objects')
     for_delete = []
-    res = index.browse_all()
+    res = index.browse_objects()
     for hit in res:
         if not hit['objectID'] in exists:
             for_delete.append(hit['objectID'])
